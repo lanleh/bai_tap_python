@@ -12,6 +12,6 @@ try:
 except(ZeroDivisionError):
     print("khong the chia cho 0")
 
-n=int(input("Nhap so n:"))
-print(can_bac_hai(n))
-print(binh_phuong(n))
+m=int(input("Nhap so m:"))
+print(can_bac_hai(m))
+print(binh_phuong(m))
