@@ -17,7 +17,7 @@ class quanlynhanvien:
             que_quan=input("Nhap que quan:")
             chamcong=int(input("So ngay cong:"))
             nhanvien=nv(ten,tuoi,que_quan,chamcong)
-            machucvu=input("Nhap chuc vu:")
+            machucvu=input("Nhap chuc vu (NV,TP,GD):")
             if machucvu=="TP":
                 nhanvien.chucvu="Truong phong"
                 heso=1.6
@@ -27,6 +27,8 @@ class quanlynhanvien:
             elif machucvu=="GD":
                 nhanvien.chucvu="Giam doc"
                 heso=2
+            else:
+                break
             nhanvien.luong=int(300000*chamcong*heso)
             self.soluong.append(machucvu)
             nhanvien.id=str(machucvu+str(self.soluong.count(machucvu)))
@@ -38,6 +40,18 @@ class quanlynhanvien:
         for i in self.list_nhanvien:
             print("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format(i.id,i.ten,i.tuoi,i.que_quan,i.chucvu,i.luong))
 
-test=quanlynhanvien()
-test.themnhanvien()
-test.hienthinhanvien()
+    def suathongtin(self):
+        nhanvien_id=input("Nhap ma nhan vien can sua:")
+        for nhanvien in self.list_nhanvien:
+            if nhanvien_id==nhanvien.id:
+                tenmoi=input("Nhap ten moi:")
+                nhanvien.ten=tenmoi
+                tuoimoi=int(input("Nhap tuoi moi:"))
+                nhanvien.tuoi=tuoimoi
+    
+    def xoanhanvien(self):
+        nhanvien_id=input("Nhap ma nhan vien can xoa:")
+        for nhanvien in self.list_nhanvien:
+            if nhanvien_id==nhanvien.id:
+                self.list_nhanvien.remove(nhanvien)
+
