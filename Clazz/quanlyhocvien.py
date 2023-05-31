@@ -27,7 +27,7 @@ class Quanlyhocvien:
                 hocvien.xeploai="Gioi"
             else:
                 hocvien.xeploai="Yeu"
-            hocvien.id = self.list_hocvien.__len__() + 1
+            hocvien.id = self.PTTC1_list.__len__() + 1
             self.PTTC1_list.append(hocvien)
 
     def hienthihocvien(self):
