@@ -34,6 +34,24 @@ class Quanlyhocvien:
         print ("{:<15}{:<15} {:<15} {:<15} {:<10}{:<15}{:<20}{:<20}".format("ID","Ten","Tuoi","Que Quan","Lop","Tieng Anh","Tin Hoc","Xep Loai"))
         for i in self.PTTC1_list:
             print("{:<15}{:<15} {:<15} {:<15} {:<10}{:<15}{:<20}{:<20}".format(i.id,i.ten,i.tuoi,i.que_quan,i.lop,i.tieng_anh,i.tin_hoc,i.xeploai)
+                  
+    def suathongtin(self,hocvien_id):
+    for hocvien in self.PTTC1_list:
+        if hocvien_id==hocvien.id:
+            tenmoi=input("Thay ten hoc vien:")
+            hocvien.ten=tenmoi
+            try:
+                tuoimoi=input(int("Thay tuoi hoc vien:"))
+            except:
+                print("error")
+            hocvien.tuoi=tuoimoi
+            self.hienthihocvien
+                  
+   def xoa_hoc_vien(self,hocvien_id):
+        for hocvien in self.PTTC1_list:
+            if hocvien_id == hocvien.id:
+                self.PTTC1_list.pop(hocvien_id-1)
+                self.hienthihocvien()               
 
 test=Quanlyhocvien()
 test.themhocvien()
