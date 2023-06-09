@@ -31,7 +31,7 @@ class quanlynhanvien:
                 break
             nhanvien.luong=int(300000*chamcong*heso)
             self.soluong.append(machucvu)
-            nhanvien.id=str(machucvu+str(self.soluong.count(machucvu)))
+            nhanvien.id=machucvu+str(self.soluong.count(machucvu))
             self.list_nhanvien.append(nhanvien)
     
 
