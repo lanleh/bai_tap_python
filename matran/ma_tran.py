@@ -11,9 +11,9 @@ def nhap():
 
 
 def xuat():
-    for a in range(m):
+    for a in range(len(ma_tran)):
         hang=str()
-        for b in range(n):
+        for b in range(len(ma_tran[a])):
             hang+=str(ma_tran[a][b])+"   "
         print(hang)
 
