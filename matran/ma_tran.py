@@ -18,8 +18,8 @@ def xuat():
         print(hang)
 
 def output():
-    for a in range(m):
-        for b in range(n):
+    for a in range(len(ma_tran)):
+        for b in range(len(ma_tran[a])):
             print("{:<10}".format(ma_tran[a][b]),end="")
         print()
 
