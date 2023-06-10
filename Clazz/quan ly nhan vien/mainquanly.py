@@ -1,6 +1,6 @@
 from quanlynhanvien import *
-test=quanlynhanvien()
-while(True):
+test = quanlynhanvien()
+while True:
     print("|--------------------------------------|")
     print("|----Chuong trinh quan ly nhan vien    |")
     print("|1. Chuc nang them                     |")
@@ -11,14 +11,14 @@ while(True):
     print("|--------------------------------------|")
 
     nhap = int(input("Nhap chuc nang theo so: "))
-    if nhap==1:
+    if nhap == 1:
         print("------------------")
         test.themnhanvien()
-    elif nhap==2:
+    elif nhap == 2:
         test.xoanhanvien()
-    elif nhap==3:
+    elif nhap == 3:
         test.suathongtin()
-    elif nhap==4:
+    elif nhap == 4:
         test.hienthinhanvien()
     elif nhap == 0:
         print("Tam biet")
