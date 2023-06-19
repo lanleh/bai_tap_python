@@ -13,6 +13,13 @@ def getalldata():
     # Trả du lieu
     ketqua = dulieu.fetchall()
     for i in ketqua:
+        i=list(i)
+        diem_trung_binh = (i[4]+i[5])/2
+        if diem_trung_binh > 5:
+            xeploai = "Gioi"
+        else:
+            xeploai = "Yeu"
+        i.append(xeploai)
         print(i)
 
 def data_theo_id():
@@ -20,8 +27,15 @@ def data_theo_id():
     dulieu.execute("SELECT * FROM quan_ly_hoc_vien.hocvien WHERE Id = {}".format(n))
     ketqua = dulieu.fetchall()
     for i in ketqua:
+        i=list(i)
+        diem_trung_binh = (i[4]+i[5])/2
+        if diem_trung_binh > 5:
+            xeploai = "Gioi"
+        else:
+            xeploai = "Yeu"
+        i.append(xeploai)
         print(i)
-
+        
 def getalldata2():
     dulieu.execute("SELECT * FROM quan_ly_hoc_vien.hocvien")
     ketqua = dulieu.fetchone()
@@ -63,6 +77,11 @@ def update_data():
         dulieu.execute("UPDATE Quan_ly_hoc_vien.Hocvien SET Information = {} WHERE Id = {}".format(new_info,id))
     ketnoi.commit()
 
+def xoa_data():
+    id=int(input("Nhap ID cua du lieu can xoa:"))
+    dulieu.execute("DELETE FROM  Quan_ly_hoc_vien.Hocvien WHERE Id = {}".format(id))
+    ketnoi.commit()
+
 
 
 
@@ -75,6 +94,9 @@ def update_data():
 # Update du lieu
 # update_data()
 
+#Xoa du lieu
+# xoa_data()
+
 
 # Dong ket noi
-ketnoi.close()
+# ketnoi.close()
