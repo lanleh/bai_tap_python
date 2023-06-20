@@ -4,20 +4,25 @@ a=import_sql.getConnection()
 data=a.cursor()
 
 def display():
+    print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
     data.execute("SELECT * FROM quan_ly_nhan_vien.nhanvien")
     output = data.fetchall()
+    dem=[]
     for i in output:
-        print(i)
+        dem.append(i[4])
+        ID=i[4]+str(dem.count(i[4]))
+        if i[4]=='NV':
+            luong=300000*i[5]*1
+        elif i[4]=='TP':
+            luong=300000*i[5]*1.6
+        elif i[4]=='GD':
+            luong=300000*i[5]*2
+        print("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format(ID,i[1],i[2],i[3],i[4],luong))
 
-#    dem=[]
-#    for i in output:
-#        i=list(i)
-#        id=int(input("Nhap ID can sua:"))
-#        dem.append(i[4])
-#        ID=i[4]+str(dem.count(i[4]))
-#        data.execute("UPDATE quan_ly_nhan_vien.nhanvien SET ID = '{}' WHERE ID = {}".format(ID,id))
-#        print(i)
-        
+
+
+
+
 
 
 def data_theo_id():
@@ -64,4 +69,4 @@ def delete():
     data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE ID = {}".format(id))
     a.commit()
 
-add()
+display()
