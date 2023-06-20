@@ -4,10 +4,10 @@ a=import_sql.getConnection()
 data=a.cursor()
 
 def display():
-    print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
     data.execute("SELECT * FROM quan_ly_nhan_vien.nhanvien")
     output = data.fetchall()
     dem=[]
+    print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
     for i in output:
         dem.append(i[4])
         ID=i[4]+str(dem.count(i[4]))
@@ -22,15 +22,14 @@ def display():
 
 
 
-
-
-
 def data_theo_id():
     n=input("Nhap ID:")
     data.execute("SELECT * FROM quan_ly_nhan_vien.nhanvien WHERE ID = {}".format(n))
     ketqua = data.fetchall()
     for i in ketqua:
         print(i)
+
+
 
 
 def add():
@@ -42,6 +41,8 @@ def add():
     sql= "INSERT INTO `Nhanvien`(`Name`, Age, Country, Chucvu, Songaylam) VALUES ('{}',{},'{}','{}',{})".format(name,age,country,chucvu,day)
     data.execute(sql)
     a.commit()
+
+
 
 def update_data():
     id=int(input("Nhap ID cua du lieu can sua:"))
@@ -64,9 +65,10 @@ def update_data():
         data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Songaylam = {} WHERE ID = {}".format(new_info,id))
     a.commit()
 
+
+
 def delete():
     id=int(input("Nhap ID cua du lieu can xoa:"))
     data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE ID = {}".format(id))
     a.commit()
 
-display()
