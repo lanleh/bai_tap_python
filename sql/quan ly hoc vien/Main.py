@@ -8,15 +8,22 @@ while True:
     
     if cau_lenh==1:
         getalldata()
+
     elif cau_lenh==2:
         data_theo_id()
+
     elif cau_lenh==3:
         createdata()
+
     elif cau_lenh==4:
         update_data()
+
     elif cau_lenh==5:
         xoa_data()
+
     elif cau_lenh==0:
+        ketnoi.close
         break
+
     else:
         print("Vui long nhap cac so tu 0 den 5")

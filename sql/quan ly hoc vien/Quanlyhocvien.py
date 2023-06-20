@@ -83,20 +83,5 @@ def xoa_data():
     ketnoi.commit()
 
 
-
-
-# Lay du lieu to Mysql ve Visual Code
-# data_theo_id()
-
-# Them du lieu
-# createdata()
-
-# Update du lieu
-# update_data()
-
-#Xoa du lieu
-# xoa_data()
-
-
 # Dong ket noi
 # ketnoi.close()
