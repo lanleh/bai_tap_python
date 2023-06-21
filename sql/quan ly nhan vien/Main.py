@@ -2,7 +2,7 @@ from Quanlynhanvien import *
 
 while True:
     print("Chuong trinh quan ly nhan vien")
-    print("Menu \n 1. Hien thi nhan vien \n 2. Them nhan vien \n 3. Sua thong tin nhan vien \n 4. Xoa nhan vien \n 0. Thoat")
+    print("Menu \n 1. Hien thi nhan vien \n 2. Them nhan vien \n 3. Sua thong tin nhan vien \n 4. Xoa nhan vien \n 5. Xep loai theo luong \n 0. Thoat")
     cau_lenh=int(input("Chon tac vu:"))
     if cau_lenh==1:
         display()
@@ -15,6 +15,8 @@ while True:
     elif cau_lenh==4:
         delete()
         display()
+    elif cau_lenh==5:
+        xeploai()
     elif cau_lenh==0:
         a.close
         break
