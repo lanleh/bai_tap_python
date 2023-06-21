@@ -39,7 +39,7 @@ def display():
 
 def data_theo_id():
     new_list=new_id_n_luong()
-    id=input("Nhap ID:")
+    id=input("Nhap ID cua nhan vien:")
     for i in new_list:
         if i[0] == id:
            print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
@@ -93,9 +93,9 @@ def delete():
     data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE ID = {}".format(id))
     a.commit()
 
-def xeploai():
+def xeploailuong():
     new_list=new_id_n_luong()
-    new_list.sort(key=lambda x: x[-1],reverse=True)
+    new_list.sort(key=lambda x: x[6],reverse=True)
     print ("{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
     for i in new_list:
         print("{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}".format(i[0],i[1],i[2],i[3],i[4],i[6]))

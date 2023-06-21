@@ -16,7 +16,7 @@ while True:
         delete()
         display()
     elif cau_lenh==5:
-        xeploai()
+        xeploailuong()
     elif cau_lenh==0:
         a.close
         break
