@@ -55,7 +55,13 @@ def add():
     name=input("Nhap ten:")
     age=int(input("Nhap tuoi:"))
     country=input("Nhap que quan:")
-    chucvu=input("Nhap chuc vu:")
+    while True:
+        a=input("Nhap chuc vu:")
+        if a in ("NV", "TP", "GD"):
+            chucvu=a
+            break
+        else:
+            print("Vui long nhap NV, TP, GD: ")
     day=int(input("Nhap so ngay lam:"))
     sql= "INSERT INTO `Nhanvien`(`Name`, Age, Country, Chucvu, Songaylam) VALUES ('{}',{},'{}','{}',{})".format(name,age,country,chucvu,day)
     data.execute(sql)
@@ -100,3 +106,12 @@ def xeploailuong():
     for i in new_list:
         print("{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}".format(i[0],i[1],i[2],i[3],i[4],i[6]))
 
+
+def xuatdulieu():
+    text = new_id_n_luong()
+    b = open("sql/quan ly nhan vien/dulieu.txt","w")
+    b.write("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}\n".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
+    for i in text:
+        nhanvien="{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}\n".format(i[0],i[1],i[2],i[3],i[4],i[6])
+        b.write(nhanvien)
+    b.close()

@@ -1,0 +1,7 @@
+ID             Ten            Tuoi            Que quan        Chuc vu         Luong          
+NV1            Nguyen Van A   20              Ha Noi          Nhan vien       9000000        
+GD1            Nguyen Van B   21              Da Nang         Giam doc        17400000       
+TP1            Nguyen Van C   22              Nha Trang       Truong phong    12000000.0     
+NV2            Nguyen Van M   34              Hue             Nhan vien       6900000        
+TP2            Tran Van Y     54              Binh Dinh       Truong phong    10080000.0     
+GD2            Tran Van C     65              CN              Giam doc        6000000        
