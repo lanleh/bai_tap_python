@@ -51,7 +51,6 @@ def data_theo_id():
 
 
 
-
 def add():
     name=input("Nhap ten:")
     age=int(input("Nhap tuoi:"))
@@ -92,6 +91,7 @@ def delete():
     id=int(input("Nhap so thu tu cua nhan vien can xoa:"))
     data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE ID = {}".format(id))
     a.commit()
+
 
 def xeploailuong():
     new_list=new_id_n_luong()
