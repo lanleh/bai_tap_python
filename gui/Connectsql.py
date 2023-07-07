@@ -4,6 +4,6 @@ def getConnection():
     connection = mysql.connector.connect(host='localhost', 
                                         user='root', 
                                         passwd='Mynew113',
-                                        database='Quan_ly_hoc_vien'
+                                        database='Quan_ly_hoc_vien_2'
     )
     return connection
