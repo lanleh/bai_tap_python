@@ -37,13 +37,14 @@ def display():
 
 
 
-def data_theo_id():
+def data_theo_ten():
     new_list=new_id_n_luong()
-    id=input("Nhap ID cua nhan vien:")
+    id=input("Nhap ten cua nhan vien:")
     for i in new_list:
-        if i[0] == id:
+        if i[1] == id:
            print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format("ID","Ten","Tuoi","Que quan","Chuc vu","Luong"))
            print ("{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}".format(i[0],i[1],i[2],i[3],i[4],i[6]))
+    return(id)
 #    data.execute("SELECT * FROM quan_ly_nhan_vien.nhanvien WHERE ID = {}".format(n))
 #    ketqua = data.fetchall()
 #    for i in ketqua:
@@ -56,9 +57,9 @@ def add():
     age=int(input("Nhap tuoi:"))
     country=input("Nhap que quan:")
     while True:
-        a=input("Nhap chuc vu:")
-        if a in ("NV", "TP", "GD"):
-            chucvu=a
+        sample=input("Nhap chuc vu:")
+        if sample in ("NV", "TP", "GD"):
+            chucvu=sample
             break
         else:
             print("Vui long nhap NV, TP, GD: ")
@@ -71,31 +72,31 @@ def add():
 
 
 def update_data():
-    id=int(input("Nhap so thu tu cua nhan vien can sua:"))
+    id=data_theo_ten()
     print("Ban can sua thong tin gi? \n 1: Ten \n 2: Tuoi \n 3: Que quan \n 4: Chuc vu \n 5: So ngay lam")
     cau_lenh=int(input("Nhap 1,2,3,4:"))
     if cau_lenh==1:
         new_info=input("Nhap thong tin moi:")
-        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET `Name` = '{}' WHERE ID = {}".format(new_info,id))
+        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET `Name` = '{}' WHERE `Name` = '{}'".format(new_info,id))
     elif cau_lenh==2:
         new_info=int(input("Nhap thong tin moi:"))
-        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Age = {} WHERE ID = {}".format(new_info,id))
+        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Age = {} WHERE `Name` = '{}'".format(new_info,id))
     elif cau_lenh==3:
         new_info=input("Nhap thong tin moi:")
-        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Country = '{}' WHERE ID = {}".format(new_info,id))
+        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Country = '{}' WHERE `Name` = '{}'".format(new_info,id))
     elif cau_lenh==4:
         new_info=input("Nhap thong tin moi:")
-        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Chucvu = {} WHERE ID = {}".format(new_info,id))
+        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Chucvu = {} WHERE `Name` = '{}'".format(new_info,id))
     elif cau_lenh==5:
         new_info=int(input("Nhap thong tin moi:"))
-        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Songaylam = {} WHERE ID = {}".format(new_info,id))
+        data.execute("UPDATE Quan_ly_nhan_vien.Nhanvien SET Songaylam = {} WHERE `Name` = '{}'".format(new_info,id))
     a.commit()
 
 
 
 def delete():
-    id=int(input("Nhap so thu tu cua nhan vien can xoa:"))
-    data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE ID = {}".format(id))
+    id=input("Nhap ten cua nhan vien can xoa:")
+    data.execute("DELETE FROM  Quan_ly_nhan_vien.Nhanvien WHERE `Name` = '{}'".format(id))
     a.commit()
 
 
@@ -115,3 +116,4 @@ def xuatdulieu():
         nhanvien="{:<15}{:<15}{:<15} {:<15} {:<15} {:<15}\n".format(i[0],i[1],i[2],i[3],i[4],i[6])
         b.write(nhanvien)
     b.close()
+

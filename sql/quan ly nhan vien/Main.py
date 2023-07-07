@@ -10,9 +10,11 @@ while True:
         add()
         display()
     elif cau_lenh==3:
+        display()
         update_data()
         display()
     elif cau_lenh==4:
+        display()
         delete()
         display()
     elif cau_lenh==5:
