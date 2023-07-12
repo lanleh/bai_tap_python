@@ -95,7 +95,8 @@ def hienthi():
     dulieu.execute("SELECT * FROM quan_ly_hoc_vien_2.hocvien")
     text = dulieu.fetchall()
     screen.insert("1.0",text)
-    screen['state'] = 'disabled'
+    nutthaotac = Button(qlhv, text = "Xóa màn hình", command = lambda: [screen.delete("1.0", END), nutthaotac.destroy()])
+    nutthaotac.grid(column = 3, row = 10)
 
 hienthi_hv = Button(qlhv, text = "Hiển thị học viên", command = hienthi).grid(column = 2, row = 8)
 
@@ -119,7 +120,6 @@ def sua():
         id_box.after(1100,id_box.destroy)
     nutthaotac = Button(qlhv, text = "Sửa", command = thaotac)
     nutthaotac.grid(column = 3, row = 10)
-    nutthaotac.after(5000,nutthaotac.destroy)
     
 sua_hv = Button(qlhv, text = "Sửa học viên", command = sua).grid(column = 2, row = 9)
 
@@ -133,17 +133,14 @@ def xoa():
     id_box.grid(column = 2, row = 10)
     def thaotac():
         dulieu.execute("DELETE FROM quan_ly_hoc_vien_2.hocvien WHERE ID = {}".format(id.get()))    
-        ketnoi.commit()
-        for giatri in (giatri1, giatri2, giatri3, giatri4, giatri5, giatri6):
-            giatri.set("")        
+        ketnoi.commit()        
         success = Label(qlhv, text="Đã xóa")
         success.grid(column = 3, row =8)
         success.after(1000,success.destroy)
         xoa1.after(1000,xoa1.destroy)
         id_box.after(1100,id_box.destroy)
     nutthaotac = Button(qlhv, text = "Xóa", command = thaotac)
-    nutthaotac.grid(column = 3, row = 10)
-    nutthaotac.after(5000,nutthaotac.destroy)    
+    nutthaotac.grid(column = 3, row = 10)  
 
 xoa_hv = Button(qlhv, text="Xóa học viên", command = xoa).grid(column = 1, row = 9)
 
