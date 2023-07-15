@@ -40,71 +40,71 @@ tien.set(1000000)
 sotienconlai = Entry(lode, width = 10, textvariable = tien).grid(row = 11, column = 1)
 
 def ketqua(game):
-        so_trung = []
-        def quayso(n):
-            if n < 4:
-                a = random.randint(1,99999)
-                return((5-len(str(a)))*"0"+str(a))
-            elif n in (4,5):
-                a = random.randint(1,9999)
-                return((4-len(str(a)))*"0"+str(a))
-            elif n == 6:
-                a = random.randint(1,999)
-                return((3-len(str(a)))*"0"+str(a))
-            elif n == 7:
-                a = random.randint(1,99)
-                return((2-len(str(a)))*"0"+str(a))
-        def giai(n, soluong):
-            for i in range(soluong):    
-                b = quayso(n)
-                res = int(b[-2:])
-                so_trung.append(res)
-                screen.insert(END,b+" ") 
-        def tinhtien(game):
-            reward = 0
-            if game == "lo":
-                entry = so_lo.get()
-                c = so_trung.count(entry)
-                if c != 0:
-                    reward = c*diem_lo.get()*23000
-                else:
-                    reward = -diem_lo.get()*23000
-            elif game == "de":
-                entry = so_de.get()
-                c = so_trung.count(entry)
-                if c!=0:
-                    reward = c*diem_de.get()*1000
-                else:
-                    reward = -diem_de.get()*1000
-            outcome = tien.get() + reward
-            if outcome <= 0:
-                outcome = 0
-                screen.delete("1.0", END)
-                screen.insert(END, "ĐÃ HẾT TIỀN")
-            tien.set(outcome)
-        
-        screen.delete("1.0",END)
-        screen.insert(END,"Giải ĐB: ")
-        giai(0,1)
-        screen.insert(END,"\n1: ")
-        giai(1,1)
-        screen.insert(END,"\n2: ")
-        giai(2,2)
-        screen.insert(END,"\n3: ")
-        giai(3,3)
-        screen.insert(END,"\n")
-        giai(3,3)
-        screen.insert(END, "\n4: ")
-        giai(4,4)
-        screen.insert(END, "\n5: ")
-        giai(5,3)
-        screen.insert(END,"\n")
-        giai(5,3)
-        screen.insert(END,"\n6: ")
-        giai(6,3)
-        screen.insert(END,"\n7: ")
-        giai(7,4)
-        tinhtien(game)
+    def quayso(n):
+        if n < 4:
+            a = random.randint(1,99999)
+            return((5-len(str(a)))*"0"+str(a))
+        elif n in (4,5):
+            a = random.randint(1,9999)
+            return((4-len(str(a)))*"0"+str(a))
+        elif n == 6:
+            a = random.randint(1,999)
+            return((3-len(str(a)))*"0"+str(a))
+        elif n == 7:
+            a = random.randint(1,99)
+            return((2-len(str(a)))*"0"+str(a))
+    so_trung = []    
+    def giai(n, soluong):
+        for i in range(soluong):    
+            b = quayso(n)
+            res = int(b[-2:])
+            so_trung.append(res)
+            screen.insert(END,b+" ") 
+    def tinhtien(game):
+        reward = 0
+        if game == "lo":
+            entry = so_lo.get()
+            c = so_trung.count(entry)
+            if c != 0:
+                reward = c*diem_lo.get()*23000
+            else:
+                reward = -diem_lo.get()*23000
+        elif game == "de":
+            entry = so_de.get()
+            c = so_trung.count(entry)
+            if c!=0:
+                reward = c*diem_de.get()*1000
+            else:
+                reward = -diem_de.get()*1000
+        outcome = tien.get() + reward
+        if outcome <= 0:
+            outcome = 0
+            screen.delete("1.0", END)
+            screen.insert(END, "ĐÃ HẾT TIỀN")
+        tien.set(outcome)
+    
+    screen.delete("1.0",END)
+    screen.insert(END,"Giải ĐB: ")
+    giai(0,1)
+    screen.insert(END,"\n1: ")
+    giai(1,1)
+    screen.insert(END,"\n2: ")
+    giai(2,2)
+    screen.insert(END,"\n3: ")
+    giai(3,3)
+    screen.insert(END,"\n")
+    giai(3,3)
+    screen.insert(END, "\n4: ")
+    giai(4,4)
+    screen.insert(END, "\n5: ")
+    giai(5,3)
+    screen.insert(END,"\n")
+    giai(5,3)
+    screen.insert(END,"\n6: ")
+    giai(6,3)
+    screen.insert(END,"\n7: ")
+    giai(7,4)
+    tinhtien(game)
 
 play1 = Button(lode, text = "Chơi đi đừng sợ", command = lambda: ketqua("lo")).grid(row = 3, column = 2)
 play2 = Button(lode, text = "Chơi đi đừng sợ", command = lambda: ketqua("de")).grid(row = 7, column = 2)
