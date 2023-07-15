@@ -10,15 +10,15 @@ input = StringVar()
 input_box = Entry(calc, width = 25, textvariable = input)
 input_box.grid(column = 1, row = 0)
 
+input.set("")
 
 def click(a):
     global output
-    output = ""
     if a == "%":
         output = str(int(input.get())/100)
         input.set(output)
     else:
-        output = output + str(a)
+        output = str(input.get()) + str(a)
     input.set(output)
 
 #Số
@@ -52,7 +52,6 @@ result = Button(calc, text = "Result", command = res).grid()
 
 #Nút xóa
 eraser = Button(calc, text="C", command = lambda: input.set("")).grid(column = 3, row = 0)
-
 
 
 calc.mainloop()

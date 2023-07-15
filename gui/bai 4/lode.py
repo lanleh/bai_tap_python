@@ -4,7 +4,7 @@ import random
 
 
 lode = Tk()
-lode.title ("Tro choi lo de")
+lode.title("Tro choi lo de")
 lode.geometry("800x500")
 
 
@@ -23,7 +23,7 @@ choide = Label(lode, text = "II. Chơi Đề").grid(row = 5, column = 0)
 chonso2 = Label(lode, text = "Chọn số").grid(row = 6, column = 0)
 so_de = IntVar()
 box3 = Entry(lode, width = 25, textvariable = so_de).grid(row = 6, column = 1)
-danhmaydiem2 = Label(lode, text = "Đánh mấy điểm").grid(row = 6, column = 2)
+danhmaydiem2 = Label(lode, text = "Đánh mấy điểm:").grid(row = 6, column = 2)
 diem_de = IntVar()
 box4 = Entry(lode, width = 25, textvariable = diem_de).grid(row = 6, column = 3)
 note2 = Label(lode, text = "1 điểm = 1.000 VNĐ").grid(row = 8, column = 3)
@@ -53,25 +53,28 @@ def ketqua(game):
         elif n == 7:
             a = random.randint(1,99)
             return((2-len(str(a)))*"0"+str(a))
-    so_trung = []    
+        
+    winners = []    
+
     def giai(n, soluong):
         for i in range(soluong):    
             b = quayso(n)
-            res = int(b[-2:])
-            so_trung.append(res)
+            winner = int(b[-2:])
+            winners.append(winner)
             screen.insert(END,b+" ") 
+
     def tinhtien(game):
         reward = 0
         if game == "lo":
-            entry = so_lo.get()
-            c = so_trung.count(entry)
+            bet = so_lo.get()
+            c = winners.count(bet)
             if c != 0:
                 reward = c*diem_lo.get()*23000
             else:
                 reward = -diem_lo.get()*23000
         elif game == "de":
-            entry = so_de.get()
-            c = so_trung.count(entry)
+            bet = so_de.get()
+            c = winners.count(bet)
             if c!=0:
                 reward = c*diem_de.get()*1000
             else:
@@ -82,7 +85,7 @@ def ketqua(game):
             screen.delete("1.0", END)
             screen.insert(END, "ĐÃ HẾT TIỀN")
         tien.set(outcome)
-    
+
     screen.delete("1.0",END)
     screen.insert(END,"Giải ĐB: ")
     giai(0,1)
@@ -104,6 +107,7 @@ def ketqua(game):
     giai(6,3)
     screen.insert(END,"\n7: ")
     giai(7,4)
+    
     tinhtien(game)
 
 play1 = Button(lode, text = "Chơi đi đừng sợ", command = lambda: ketqua("lo")).grid(row = 3, column = 2)
