@@ -10,10 +10,10 @@ input = StringVar()
 input_box = Entry(calc, width = 25, textvariable = input)
 input_box.grid(column = 1, row = 0)
 
-output = ""
 
 def click(a):
     global output
+    output = ""
     if a == "%":
         output = str(int(input.get())/100)
         input.set(output)
