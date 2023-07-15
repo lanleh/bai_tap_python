@@ -9,7 +9,7 @@ dulieu = ketnoi.cursor()
 
 # Tạo giao diện
 qlnv = Tk()
-qlnv.title = "Quản lý nhân viên"
+qlnv.title("Quản lý nhân viên")
 qlnv.geometry("575x425")
 
 # Tiêu đề

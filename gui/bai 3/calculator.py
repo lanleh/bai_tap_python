@@ -10,8 +10,7 @@ input = StringVar()
 input_box = Entry(calc, width = 25, textvariable = input)
 input_box.grid(column = 1, row = 0)
 
-
-output=""
+output = ""
 
 def click(a):
     global output
@@ -48,17 +47,11 @@ def res():
     a = eval(input.get())
     input.set(a)
 
-    
 result = Button(calc, text = "Result", command = res).grid()
 
 
 #Nút xóa
-def erase():
-    output = ""
-    input.set(output)
-
-eraser = Button(calc, text="C", command = erase).grid(column = 3, row = 0)
-
+eraser = Button(calc, text="C", command = lambda: input.set("")).grid(column = 3, row = 0)
 
 
 
