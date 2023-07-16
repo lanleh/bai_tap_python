@@ -13,10 +13,8 @@ input_box.grid(column = 1, row = 0)
 input.set("")
 
 def click(a):
-    global output
     if a == "%":
-        output = str(int(input.get())/100)
-        input.set(output)
+        output = str(input.get())+"/100"
     else:
         output = str(input.get()) + str(a)
     input.set(output)
@@ -44,7 +42,10 @@ percent = Button(calc, text = "%", command = lambda: click("%")).grid(column = 2
 
 #Kết quả
 def res():
-    a = eval(input.get())
+    try:
+        a = eval(input.get())
+    except:
+        a = "Error"
     input.set(a)
 
 result = Button(calc, text = "Result", command = res).grid()
