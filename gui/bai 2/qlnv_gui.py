@@ -109,7 +109,9 @@ def sua():
         success.after(1000,success.destroy)
         sua1.after(1000,sua1.destroy)
         id_box.after(1100,id_box.destroy)
-    nutthaotac1 = Button(qlnv, text = "Sửa", command = thaotac)
+        for giatri in (giatri1, giatri2, giatri3, giatri4, giatri5):
+            giatri.set("")
+    nutthaotac1 = Button(qlnv, text = "Sửa", command = lambda: [thaotac(),nutthaotac1.destroy()])
     nutthaotac1.grid(column = 3, row = 10)
     
 sua_hv = Button(qlnv, text = "Sửa nhân viên", command = sua).grid(column = 2, row = 9)
@@ -130,7 +132,7 @@ def xoa():
         success.after(1000, success.destroy)
         xoa1.after(1000, xoa1.destroy)
         id_box.after(1100, id_box.destroy)
-    nutthaotac2 = Button(qlnv, text = "Xóa", command = thaotac)
+    nutthaotac2 = Button(qlnv, text = "Xóa", command = lambda: [thaotac(), nutthaotac2.destroy()])
     nutthaotac2.grid(column = 3, row = 10)
 
 xoa_hv = Button(qlnv, text = "Xóa nhân viên", command = xoa).grid(column = 1, row = 9)

@@ -35,8 +35,7 @@ tongtien = Label(lode, text = "Tổng tiền: 1.000.000 VNĐ").grid(row = 10, co
 note3 = Label(lode, text = "Số tiền còn lại:").grid(row = 11, column = 0)
 
 
-tien = IntVar()
-tien.set(1000000)
+tien = IntVar(lode, 1000000)
 sotienconlai = Entry(lode, width = 10, textvariable = tien).grid(row = 11, column = 1)
 
 def ketqua(game):
@@ -114,4 +113,4 @@ play1 = Button(lode, text = "Chơi đi đừng sợ", command = lambda: ketqua("
 play2 = Button(lode, text = "Chơi đi đừng sợ", command = lambda: ketqua("de")).grid(row = 7, column = 2)
 
 
-mainloop()
+lode.mainloop()
