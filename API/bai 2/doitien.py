@@ -38,7 +38,7 @@ with open("API/bai 2/cl-currencies-table.txt","r") as read_file:
         if "td" in cleaned and len(cleaned) == 12:
             cleaned = cleaned.strip("</td>")
             currency_list.append(cleaned)
-                
+
 c1["values"] = tuple(currency_list)
 c2["values"] = tuple(currency_list)        
 
@@ -64,12 +64,16 @@ def convert():
     price = round(price, 5)
     try:
         m = value1.get()
-        value2.set(m*price)
         n = value2.get()
-        screen.insert(END, "{} {} equals {} {}".format(m, currency1, n, currency2))
+        if n != 0:
+            amount = round(1/(n*price), 5)
+            value1.set(amount)
+        amount = round(m*price, 5)
+        value2.set(amount)
+        screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency1, value2.get(), currency2))
         screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
     except:
-        screen.insert("1.0", "Error")
+        screen.insert(END, "ERROR")
 
 
 search = Button(converter, text = "Search", command = convert).grid(column = 0, row = 3)
