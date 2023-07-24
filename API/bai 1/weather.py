@@ -7,6 +7,7 @@ weather = Tk()
 weather.title("Weather Application")
 weather.geometry("500x400")
 
+
 top_frame = Frame(weather, bg = "midnight blue")
 top_frame.place(relheight = 0.1, relwidth = 1)
 
@@ -18,6 +19,7 @@ mid_frame2.place(relheight = 0.05, relwidth = 1, rely = 0.4)
 
 bottom_frame = Frame(weather)
 bottom_frame.place(relheight = 0.55, relwidth = 1, rely = 0.45)
+
 
 
 placeholder1 = Label(top_frame, text = "NA-/", fg = "white", bg = "midnight blue", font = ("Tahoma", 10, "bold"))
@@ -76,14 +78,28 @@ placeholder5.grid(column = 3, row = 1)
 
 def data_retrieval():
     url = "http://api.openweathermap.org/data/2.5/weather?q="
-    api_key = "fe53bfd100e8ca1c2ca47f202a2e9b9c"
-    complete_link = url + city.get()+api_key
-    print(complete_link)
-    #weather_data = requests.get(url+city.get()+api_key).json()
-    #print(weather_data)
+    api_key = "&appid=fe53bfd100e8ca1c2ca47f202a2e9b9c"
+    weather_data = requests.get(url+city.get()+api_key).json()
+
+    try:
+        placeholder1.config(text = str(weather_data['name']+", "+weather_data['sys']['country']))
+
+        placeholder2.config(text = weather_data['weather'][0]['main'])
+
+        kelvin_temp = weather_data['main']['temp']
+        celsius_temp = round(kelvin_temp - 273.15, 1)
+        fahrenheit_temp = round(celsius_temp * 1.8 + 32, 1)
+        placeholder3.config(text = (str(celsius_temp)+"ᵒC\n"+str(fahrenheit_temp)+"ᵒF"))
+
+        placeholder4.config(text = weather_data['main']['humidity'])
+
+        placeholder5.config(text = weather_data['main']['pressure'])
+    
+    except:
+        city.set("ERROR")
+
 
 search = Button(mid_frame1, text = "Search", command = data_retrieval).grid(column = 2, row = 1)
 
 
 weather.mainloop()
-
