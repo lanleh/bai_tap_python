@@ -30,20 +30,31 @@ b = StringVar()
 c2 = Combobox(converter, width = 20, textvariable = b)
 c2.grid(column = 3, row = 2)
 
-currency_list = []
+
+currency_dict = {}
 with open("API/bai 2/cl-currencies-table.txt","r") as read_file:
     content = read_file.readlines()
-    for line in content:
-        cleaned = line.strip()
-        if "td" in cleaned and len(cleaned) == 12:
-            cleaned = cleaned.strip("</td>")
-            currency_list.append(cleaned)
+    for line in content[:]:
+        if "td" not in line:
+            content.remove(line)
+        else:
+            cleaned = line.strip()
+            cleaned = cleaned.removesuffix("</td>")
+            cleaned = cleaned.removeprefix("<td>")
+            content[content.index(line)]= cleaned
 
-c1["values"] = tuple(currency_list)
-c2["values"] = tuple(currency_list)        
+    for i in content:
+        if len(i) == 3:
+            abbr = i
+            name = content[content.index(i)+1]
+            currency_dict[abbr] = name
+ 
+
+c1["values"] = tuple(currency_dict.keys())
+c2["values"] = tuple(currency_dict.keys())        
 
 
-screen = Text(converter, width = 40, height = 5)
+screen = Text(converter, width = 45, height = 5)
 screen.grid(column = 1, row = 3, columnspan = 2, rowspan = 2, padx = 5)
 
 def convert():
@@ -66,11 +77,12 @@ def convert():
         m = value1.get()
         n = value2.get()
         if n != 0:
-            amount = round(1/(n*price), 5)
+            amount = round(1/(n*price), 2)
             value1.set(amount)
-        amount = round(m*price, 5)
-        value2.set(amount)
-        screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency1, value2.get(), currency2))
+        else:
+            amount = round(m*price, 2)
+            value2.set(amount)
+        screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency_dict[currency1], value2.get(), currency_dict[currency2]))
         screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
     except:
         screen.insert(END, "ERROR")
