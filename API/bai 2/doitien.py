@@ -55,17 +55,21 @@ def convert():
         if "USD" == currency_pair[:3]:
             price = currency_data["quotes"][currency_pair]
         else:
-            price = 1/(currency_data["quotes"][currency_pair])
+            flipped = currency2 + currency1
+            price = 1/(currency_data["quotes"][flipped])
     else:
         ratio1 = currency_data["quotes"]["USD"+currency2]
         ratio2 = currency_data["quotes"]["USD"+currency1]
         price = ratio1/ratio2
-    price = round(price, 10)
-    m = value1.get()
-    value2.set(m*price)
-    n = value2.get()
-    screen.insert("1.0", "{} {} equals {} {}".format(m,currency1, n, currency2))
-    screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
+    price = round(price, 5)
+    try:
+        m = value1.get()
+        value2.set(m*price)
+        n = value2.get()
+        screen.insert(END, "{} {} equals {} {}".format(m, currency1, n, currency2))
+        screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
+    except:
+        screen.insert("1.0", "Error")
 
 
 search = Button(converter, text = "Search", command = convert).grid(column = 0, row = 3)

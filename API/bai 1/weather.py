@@ -36,7 +36,7 @@ image1 = Image.open("API/bai 1/sun.jpg")
 sun = ImageTk.PhotoImage(image1)
 
 icon1 = Label(mid_frame1, image = sun)
-icon1.grid(column = 0, row = 0, rowspan = 3, ipadx = 10)
+icon1.grid(column = 0, row = 0, rowspan = 3, padx = 10)
 
 box_title = Label(mid_frame1, text = "City or Country Name", fg = "midnight blue", font = ("Tahoma", 10, "bold")).grid(column = 1, row = 0)
 city = StringVar()
@@ -48,32 +48,32 @@ center2 = Label(mid_frame2, text = "Weather Report", bg = "midnight blue", fg = 
 image2 = Image.open("API/bai 1/clouds.jpg")
 clouds = ImageTk.PhotoImage(image2)
 icon2 = Label(bottom_frame, image = clouds)
-icon2.grid(column = 0, row = 0, ipadx = 20, ipady = 20)
+icon2.grid(column = 1, row = 0, padx = 20, pady = 20)
 placeholder2 = Label(bottom_frame, text = "NA/-", fg = "midnight blue", font = ("Tahoma", 10, "bold"))
-placeholder2.grid(column = 0, row = 1)
+placeholder2.grid(column = 1, row = 1)
 
 
 image3 = Image.open("API/bai 1/temp.jpg")
 temp = ImageTk.PhotoImage(image3)
 icon3 = Label(bottom_frame, image = temp)
-icon3.grid(column = 1, row = 0, ipadx = 20, ipady = 20)
+icon3.grid(column = 2, row = 0, padx = 20, pady = 20)
 placeholder3 = Label(bottom_frame, text = "NA/-", fg = "midnight blue", font = ("Tahoma", 10, "bold"))
-placeholder3.grid(column = 1, row = 1)
+placeholder3.grid(column = 2, row = 1)
 
 
 image4 = Image.open("API/bai 1/rain.jpg")
 rain = ImageTk.PhotoImage(image4)
 icon4 = Label(bottom_frame, image = rain)
-icon4.grid(column = 2, row = 0, ipadx = 20, ipady = 20)
+icon4.grid(column = 3, row = 0, padx = 20, pady = 20)
 placeholder4 = Label(bottom_frame, text = "NA/-", fg = "midnight blue", font = ("Tahoma", 10, "bold"))
-placeholder4.grid(column = 2, row = 1)
+placeholder4.grid(column = 3, row = 1)
 
 image5=Image.open("API/bai 1/wind.jpg")
 wind = ImageTk.PhotoImage(image5)
 icon5 = Label(bottom_frame, image = wind)
-icon5.grid(column = 3, row = 0, ipadx = 20, ipady = 20)
+icon5.grid(column = 4, row = 0, padx = 20, pady = 20)
 placeholder5 = Label(bottom_frame, text = "NA/-", fg = "midnight blue", font = ("Tahoma", 10, "bold"))
-placeholder5.grid(column = 3, row = 1)
+placeholder5.grid(column = 4, row = 1)
 
 
 def data_retrieval():
