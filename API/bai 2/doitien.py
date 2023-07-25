@@ -73,22 +73,23 @@ def convert():
         ratio2 = currency_data["quotes"]["USD"+currency1]
         price = ratio1/ratio2
     price = round(price, 5)
+    m = value1.get()
+    n = value2.get()
     try:
-        m = value1.get()
-        n = value2.get()
-        if n != 0:
-            amount = round(1/(n*price), 2)
-            value1.set(amount)
-        else:
-            amount = round(m*price, 2)
-            value2.set(amount)
-        screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency_dict[currency1], value2.get(), currency_dict[currency2]))
-        screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
-    except:
-        screen.insert(END, "ERROR")
+        if n/m != price:
+            value2.set(round(m*price,2))
+    except ZeroDivisionError:
+            value1.set(round(1/price*n, 2))
+    screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency_dict[currency1], value2.get(), currency_dict[currency2]))
+    screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
 
+
+def erase():
+    screen.delete("1.0", END)
+    value1.set(0)
+    value2.set(0)
 
 search = Button(converter, text = "Search", command = convert).grid(column = 0, row = 3)
-clear = Button(converter, text = "Clear", command = lambda: screen.delete("1.0", END)).grid(column = 0, row = 4)
+eraser = Button(converter, text = "Clear", command = erase).grid(column = 0, row = 4)
 
 converter.mainloop()
