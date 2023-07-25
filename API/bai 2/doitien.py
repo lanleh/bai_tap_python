@@ -44,7 +44,7 @@ currency_dict = {}
 for i in new_content:
     if len(i) == 3:
         abbr = i
-        name = content[content.index(i)+1]
+        name = new_content[new_content.index(i)+1]
         currency_dict[abbr] = name
  
 c1["values"] = tuple(currency_dict.keys())
