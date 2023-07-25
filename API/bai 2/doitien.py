@@ -38,12 +38,8 @@ for line in content[:]:
     if "td" not in line:
         content.remove(line)
     else:
-        cleaned = line.strip()
-        cleaned = cleaned.removesuffix("</td>")
-        cleaned = cleaned.removeprefix("<td>")
-        content[content.index(line)]= cleaned
+        new_content = [line.strip().removeprefix("<td>").removesuffix("</td>") for line in content]
 
-new_content = content
 currency_dict = {}
 for i in new_content:
     if len(i) == 3:
