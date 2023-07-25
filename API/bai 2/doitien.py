@@ -34,13 +34,10 @@ c2.grid(column = 3, row = 2)
 with open("API/bai 2/cl-currencies-table.txt","r") as read_file:
     content = read_file.readlines()
 
-for line in content[:]:
-    if "td" not in line:
-        content.remove(line)
-    else:
-        new_content = [line.strip().removeprefix("<td>").removesuffix("</td>") for line in content]
+new_content = [line.strip().removeprefix("<td>").removesuffix("</td>") for line in content if "td" in line]
 
 currency_dict = {}
+
 for i in new_content:
     if len(i) == 3:
         abbr = i
