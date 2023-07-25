@@ -17,9 +17,8 @@ value_box1 = Entry(converter, width = 25, textvariable = value1).grid(column = 0
 value2 = DoubleVar()
 value_box2 = Entry(converter, width = 25, textvariable = value2).grid(column = 0, row = 2, columnspan = 2, padx = 10, pady = 5, sticky = W)
 
-money = Image.open("API/bai 2/money.jpg")
-mini_money = money.resize((50,50))
-processed_image = ImageTk.PhotoImage(mini_money)
+money = Image.open("API/bai 2/money.jpg").resize((50,50))
+processed_image = ImageTk.PhotoImage(money)
 icon = Label(converter, image = processed_image).grid(column = 2, row = 1, rowspan = 2, padx = 10)
 
 a = StringVar()
@@ -76,7 +75,7 @@ def convert():
         except ZeroDivisionError:
                 value1.set(round(1/price*n, 2))
         screen.insert(END, "{} {} equals {} {}".format(value1.get(), currency_dict[currency1], value2.get(), currency_dict[currency2]))
-        screen.insert(END,"\nLast Time Update --- {}".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
+        screen.insert(END,"\nLast Time Update --- {}\n".format(datetime.datetime.fromtimestamp(currency_data["timestamp"])))
     except:
         screen.insert(END, "N/A")
 

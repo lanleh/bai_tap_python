@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
+import string
 import googletrans
 from googletrans import Translator
 from PIL import Image, ImageTk
@@ -14,7 +15,7 @@ logo = Label(ggdich, image = processed_image).grid(column = 2, row = 0, pady = 1
 
 lang_dict = googletrans.LANGCODES
 languages = list(lang_dict.keys())
-languages = [lang.capitalize() for lang in languages]
+languages = [lang.title() for lang in languages]
 
 source_lang = StringVar(ggdich, "Auto Detect")
 option1 = Combobox(ggdich, width = 25, textvariable = source_lang)
@@ -43,7 +44,7 @@ def trans():
     code2 = lang_dict[b]
     res = translator.translate(input, src = code1, dest = code2)
     output = res.text
-    dest_screen.insert(END, output)
+    dest_screen.insert(END, output+"\n")
 
 def erase():
     source_lang.set("Auto Detect")
